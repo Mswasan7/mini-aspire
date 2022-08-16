@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -53,5 +54,15 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class,'users_roles');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany( Permission::class,'users_permissions');
+    }
+
+    public function scopeAdmin()
+    {
+        return $this->roles->where('slug', '=', 'admin')->first();
     }
 }

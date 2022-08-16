@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+    Route::post('login', [\App\Http\Controllers\API\V1\Auth\LoginController::class, 'login'])->name('v1.login');
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::resource('loan', \App\Http\Controllers\API\V1\Loan\LoanController::class)->only(['store', 'index', 'show']);
+        Route::patch('loan/approve/{id}', [\App\Http\Controllers\API\V1\Loan\ApproveLoanController::class,'update']);
+    });
 });
+
+

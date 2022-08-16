@@ -31,7 +31,7 @@ class Loan extends Model
         'total_amount_received',
         'term',
         'disclosure_flag',
-        'status',
+        'status_id',
         'approved_by',
         'user_id'
     ];
@@ -58,5 +58,21 @@ class Loan extends Model
     public function approvedBy()
     {
         return $this->belongsTo(User::class, 'approved_by', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo( SystemSetting::class,'status_id','id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function loanRepayments()
+    {
+        return $this->hasMany( LoanRepayment::class);
     }
 }

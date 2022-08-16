@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id')->nullable();
             $table->unsignedBigInteger('objectable_id')->index()->nullable();
             $table->string('objectable_type', 30)->index()->nullable();
-            $table->string('status', 50);
-            $table->string('system_note', 200)->nullable();
+            $table->string('status',50)->nullable();
+            $table->string('system_notes', 200)->nullable();
             $table->timestamps();
         });
     }

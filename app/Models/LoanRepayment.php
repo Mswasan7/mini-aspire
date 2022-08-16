@@ -22,7 +22,7 @@ class LoanRepayment extends Model
         'guid',
         'total_payable_amount',
         'total_paid_amount',
-        'status',
+        'status_id',
         'scheduled_payment_date',
         'loan_id',
     ];
@@ -35,7 +35,8 @@ class LoanRepayment extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'deleted_at' => 'datetime'
+        'deleted_at' => 'datetime',
+        'scheduled_payment_date' => 'datetime'
     ];
 
     /**
@@ -44,5 +45,13 @@ class LoanRepayment extends Model
     public function loan()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo( SystemSetting::class,'status_id','id');
     }
 }

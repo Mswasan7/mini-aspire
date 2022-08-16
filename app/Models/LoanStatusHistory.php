@@ -23,7 +23,7 @@ class LoanStatusHistory extends Model
         'objectable_id',
         'objectable_type',
         'status',
-        'system_note'
+        'system_notes'
     ];
 
     public function author()

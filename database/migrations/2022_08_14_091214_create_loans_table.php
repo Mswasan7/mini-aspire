@@ -20,8 +20,7 @@ return new class extends Migration
             $table->double('total_amount_received',10,2)->nullable();
             $table->tinyInteger('term')->nullable();
             $table->boolean('disclosure_flag')->default(0);
-            $table->string('status', 50)->nullable();
-
+            $table->unsignedBigInteger('status_id')->nullable();
             $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->unsignedBigInteger('approved_by')->index()->nullable();
             $table->timestamps();
