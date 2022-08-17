@@ -7,7 +7,11 @@ use App\Http\DataTransferObjects\GeneralFlexibleDataTransferObject;
 
 class ShowLoanRepaymentData extends GeneralFlexibleDataTransferObject
 {
+    /**
+     * @var string
+     */
 
+    public $guid;
     /**
      * @var int|float|null
      */

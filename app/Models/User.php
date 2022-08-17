@@ -61,8 +61,17 @@ class User extends Authenticatable
         return $this->belongsToMany( Permission::class,'users_permissions');
     }
 
-    public function scopeAdmin()
+
+    public function hasRole($roles)
     {
-        return $this->roles->where('slug', '=', 'admin')->first();
+
+        $rolesArray = explode('|', $roles);
+
+        foreach ($rolesArray as $role) {
+            if ($this->roles->contains('slug', $role)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -9,6 +9,12 @@ use App\Http\DataTransferObjects\GeneralFlexibleDataTransferObject;
 
 class ShowLoanMinimalData extends GeneralFlexibleDataTransferObject
 {
+    /**
+     * @var string
+     */
+
+    public $guid;
+
    /**
      * @var int|float|null
      */

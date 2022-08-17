@@ -20,6 +20,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::resource('loan', \App\Http\Controllers\API\V1\Loan\LoanController::class)->only(['store', 'index', 'show']);
         Route::patch('loan/approve/{id}', [\App\Http\Controllers\API\V1\Loan\ApproveLoanController::class,'update']);
+        Route::patch('loan/repayment/{id}',[\App\Http\Controllers\API\V1\Loan\RepaymentController::class,'update']);
     });
 });
 

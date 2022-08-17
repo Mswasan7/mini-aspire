@@ -15,8 +15,19 @@ use Illuminate\Support\Facades\Auth;
 class LoanController extends Controller
 {
 
-    public function store(CreateLoanRequest $request, CreateLoanAction $action, CreateLoanRepaymentAction $createLoanRepaymentAction)
+    public function __construct()
     {
+        $this->middleware(['role:admin|customer']);
+    }
+
+    /**
+     * @param CreateLoanRequest $request
+     * @param CreateLoanAction $action
+     * @param CreateLoanRepaymentAction $createLoanRepaymentAction
+     * @return ResponseData
+     */
+    public function store(CreateLoanRequest $request, CreateLoanAction $action, CreateLoanRepaymentAction $createLoanRepaymentAction)
+    :ResponseData{
         $inputs = CreateLoanInputData::fromRequest($request);
         $authUser = loggedInUser();
         $loanStatus = getSystemSettings(config('global.system_settings.name.pending'));

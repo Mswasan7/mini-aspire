@@ -9,6 +9,11 @@ class ShowLoanData extends GeneralFlexibleDataTransferObject
 {
 
     /**
+     * @var string
+     */
+
+    public $guid;
+    /**
      * @var int|float|null
      */
     public $total_amount_requested;

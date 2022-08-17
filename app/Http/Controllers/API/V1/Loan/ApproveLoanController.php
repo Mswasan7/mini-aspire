@@ -12,7 +12,10 @@ use App\Models\Loan;
 class ApproveLoanController extends Controller
 {
 
-
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+    }
     public function update($id, ApproveLoanAction $action)
     {
         $authUser = loggedInUser();

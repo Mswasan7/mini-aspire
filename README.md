@@ -5,7 +5,7 @@ It is an app that allows authenticated users to go through a loan application.
 1. Execute Composer Install
 2. Clone .env.example to .env
 3. Run php artisan migrate:fresh --seed  (It will seed migrations and seeders)
-4. Seeders involved are as follows
+4. Seeders involved are as follows:
    a) Roles
    b) Permissions
    c) System Setting
